@@ -10,7 +10,6 @@ const GetCategoryData = ({ category }) => {
     try {
       Axios.get(`http://www.dnd5eapi.co/api/${category}`)
         .then(Response => {
-          console.log(Response);
           setCategoryData(Response.data.results);
           setLoadingData(false);
         })
