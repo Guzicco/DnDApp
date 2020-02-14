@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const AsideNavBar = props => {
   function handleClick(event) {
     event.preventDefault();
@@ -11,15 +11,17 @@ const AsideNavBar = props => {
       <ul className="nav flex-column">
         {props.categories.map(category => {
           return (
-            <li key={category} className="nav-item">
-              <a
-                className="nav-link active"
-                href={"/" + category}
-                onClick={handleClick}
-              >
-                {category}
-              </a>
-            </li>
+            <Link to={"/" + { category }} key={category}>
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  href={"/" + category}
+                  onClick={handleClick}
+                >
+                  {category}
+                </a>
+              </li>
+            </Link>
           );
         })}
       </ul>
