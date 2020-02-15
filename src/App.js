@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
-import { Router, Link, Switch } from "react-router-dom";
 import Axios from "axios";
+// import GetCategoryData from "./Components/CategoryItemsList";
 import Pagination from "./Components/Pagination";
 import NavigationBar from "./Components/NavigationBar";
 import AsideNavBar from "./Components/AsideNavBar";
+import { Route, StaticRouter } from "react-router-dom";
 
 const App = () => {
   const [isPageLoading, setIsPageLoading] = useState(true);
@@ -24,7 +25,6 @@ const App = () => {
         .then(Response => {
           const categList = Object.keys(Response.data);
           categList.forEach(item => item.replace("-", " "));
-          console.log(categList);
           setCategories(Object.keys(Response.data));
           setIsPageLoading(false);
         })
@@ -61,7 +61,7 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <StaticRouter>
       <div>
         <NavigationBar />
         <main className="container-fluid">
@@ -75,14 +75,14 @@ const App = () => {
                 <Pagination
                   data={categoryData}
                   isLoadingData={isloadingData}
-                  itemsPerPage={20}
+                  itemsPerPage={40}
                 />
               </div>
             </section>
           </div>
         </main>
       </div>
-    </Router>
+    </StaticRouter>
   );
 };
 

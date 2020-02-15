@@ -1,10 +1,11 @@
 import React from "react";
 import DDLogo from "../Static/img/DDLogo.jpg";
+import { NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
   return (
     <nav className="navbar navbar-expand-lg">
-      <a className="navbar-brand" href="!">
+      <a className="navbar-brand" href="/">
         <img
           src={DDLogo}
           alt="dnd icon"
@@ -13,7 +14,11 @@ const NavigationBar = () => {
           className="d-line-inblock"
         />
       </a>
-      <div>{"Dungeons & Dragons - WebBook"}</div>
+      <ul className="list-group">
+        <NavLink exact to="/home" replace>
+          <li>{"Dungeons & Dragons - WebBook"}</li>
+        </NavLink>
+      </ul>
     </nav>
   );
 };
